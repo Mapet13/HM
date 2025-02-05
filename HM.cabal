@@ -1,0 +1,49 @@
+cabal-version:      3.0
+name:               HM
+
+-- PVP summary:     +-+------- breaking API changes
+--                  | | +----- non-breaking API additions
+--                  | | | +--- code changes with no API change
+version:            0.1.0.0
+
+
+license:            MIT
+license-file:       LICENSE
+
+author:             Mapet13
+maintainer:         jakubsordyl1@gmail.com
+
+build-type:         Simple
+
+extra-doc-files:    CHANGELOG.md
+
+
+common warnings
+    ghc-options: -Wall
+
+executable HM
+    import:           warnings
+    main-is:          Main.hs
+    build-depends:    base ^>=4.18.2.1
+    hs-source-dirs:   app
+    default-language: Haskell2010
+
+
+library Lambda-lib
+   hs-source-dirs:   src
+   build-depends:    base ^>=4.18.2.1
+   default-language: Haskell2010
+   exposed-modules:  Lambda
+
+Test-Suite test
+    type:             exitcode-stdio-1.0
+    ghc-options:      -Wall
+    hs-source-dirs:   tests
+    main-is:          LambdaTests.hs
+    build-depends:    base, Lambda-lib, HUnit
+    default-language: Haskell2010
+
+
+
+
+    
